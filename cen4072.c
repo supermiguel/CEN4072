@@ -1,5 +1,5 @@
 /*  CEN 4072 Project      */
-
+//Please add comments to all your changes
 #include <stdio.h>
 #include <string.h>
 
