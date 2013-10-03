@@ -7,16 +7,16 @@ typedef struct student
 {
     char name[40];
     int USF_IF[10];
-	char Email[40];
+    char Email[40];
     int Grade_Essay_1;
-	int Grade_Essay_2;
-	int Grade_Term_Project;
+    int Grade_Essay_2;
+    int Grade_Term_Project;
 }record;
 
 void find_record(char *name, record *rec, FILE *f);
 void add_record(const record *rec, FILE *f);
 void del_record(char *name, FILE *f);
-
+void update_record(const record *rec, FILE *f);
 
 int main(void)
 {
@@ -38,7 +38,7 @@ int main(void)
     }
     recsize = sizeof(det);
 
-
+	//option menu for the user to pick an action
 	printf("Welcome to the CEN4072 student enrolment program"\n);
 	printf("Please select one of the following options: "\n);
 	printf("1) Add Student"\n);
@@ -46,7 +46,7 @@ int main(void)
 	printf("3) Search Student"\n);
 	printf("4) Update Student Information"\n);
 	printf("What would you like to do: ");
-	scanf("%d", menu);
+	scanf("%c", menu);
 	switch (menu) {
 	case 1:
 		add_record();
@@ -55,7 +55,6 @@ int main(void)
 		del_record():
 		break;
 	case 3:
-		find_record();
 		break;
 	case 4:	
 		update_record():
@@ -63,7 +62,7 @@ int main(void)
 	default:
 		printf("Invalid Selection");
 }
-
+//function that allows user to add record
 void add_record(const record *rec, FILE *f) {
     record *r;
     find_record(rec->name, r, f);
@@ -82,13 +81,27 @@ void add_record(const record *rec, FILE *f) {
 			scanf("%d" , &Grade_Essay_2);
 			printf("Enter the Project Grade  : ");
 			scanf("%d" , &Grade_Essay_1);
-			fwrite(&det,recsize,1,fp1);
+			fopen(&det,recsize,1,fp1);
     }
     else {
         // record is already in the file 
         printf("A record with name %s already exists\n", r->name);
     }
-    ...
+    //function that allows user to delete record
+    void void del_record(char *name, FILE *f) {
+    	fseek(fp1 , 0 ,SEEK_END);
+			printf("Enter the Student Name    : ");
+			scanf("%[^\n]" , det.name);
+			printf("Enter the student USF number(omit U    : ");
+			scanf("%f" , &det.USF_ID);
+			printf("Enter the Student email    : ");
+			scanf("%[^\n]" , det.Email);			
+			fwrite(&det,recsize,1,fp1);
+	for(rec = 0, rec <= FILE - 1, rec--){
+		name == name - 1;
+	}
+    }
+    
 }
 
 
