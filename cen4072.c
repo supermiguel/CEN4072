@@ -36,6 +36,18 @@ int main(void)
             return -1;
         }
     }
+    
+    fp2 = fopen("temp.dat" , "r+");
+    if(fp2 == NULL)
+    {
+        fp2 = fopen("temp.dat" , "w+");
+        if(fp1 == NULL)
+        {
+            printf("error in opening file : \n"):
+            return 0; 
+        }
+    }
+
     recsize = sizeof(det);
 
 	//option menu for the user to pick an action
@@ -102,55 +114,122 @@ void add_record(const record *rec, FILE *f) {
 	}
     }
     
-void find_record(char *name, record *rec, FILE *f){
-	int choice;
-	printf("Do you wish to search by \n");
-	printf("1: Student Name \n")
-	printf("2: Student ID \n");
-	printf("3: Student Email \n");
-	printf("What would you like to do? ");
-	scanf(%d, choice);
-	if(choice == 1){
-		printf("Enter the students name: ");
-		scanf("&c", name);
-		if((f = fopen(fname, "r")) == NULL)
-			return -1;
-		while(fgets(name, 40, f)){
-			if(strstr(name, str))!= NULL)
-				printf("We found a match!");
-			else
-				printf("No matches sorry.");
+	void find_record(char *name, record *rec, FILE *f){
+		int choice;
+		printf("Do you wish to search by \n");
+		printf("1: Student Name \n")
+		printf("2: Student ID \n");
+		printf("3: Student Email \n");
+		printf("What would you like to do? ");
+		scanf(%d, choice);
+		if(choice == 1){
+			printf("Enter the students name: ");
+			scanf("&c", name);
+			if((f = fopen(fname, "r")) == NULL)
+				return -1;
+			while(fgets(name, 40, f)){
+				if(strstr(name, str))!= NULL)
+					printf("We found a match!");
+				else
+					printf("No matches sorry.");
+			}
+			fclose(f);
+			}
+		else if(choice == 2){
+			printf("Enter the students ID: ");
+			scanf("&c", ID);
+			if((f = fopen(fname, "r")) == NULL)
+				return -1;
+			while(fgets(ID, 40, f)){
+				if(strstr(ID, int))!= NULL)
+					printf("We found a match!");
+				else
+					printf("No matches sorry.");
+			}
+			fclose(f);
+			}
+		else if(choice == 3){
+			printf("Enter the students email: ");
+			scanf("&c", rec.Email);
+			if((f = fopen(fname, "r")) == NULL)
+				return -1;
+			while(fgets(rec.Email, 40, f)){
+				if(strstr(rec.Email, str))!= NULL)
+					printf("We found a match!");
+				else
+					printf("No matches sorry.");
+			}
+			fclose(f);
+			}
+		
 		}
-		fclose(f);
+
+	void update_record(record *rec, FILE *f){
+		
+		int num=0;
+		char anw;
+		printf("Enter USF ID of student to update (w/out the U): \n");
+		scanf("%d", &num);
+		rewind(fp1);
+		
+		while(!feof(fp1)){
+			fscanf(fp1,"%s %d %s %d %d %d", &det.name,&det.USF_ID,&det.Email,&det.Grade_Essay_1,&det.Grade_Essay_2,&det.Grade_Term_Project);
+		
+			if(det.USF_ID==num){
+
+				printf("Would you like to update student name? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new name: ");
+					scanf("%[^\n",det.name);
+				}
+				printf("Would you like to update the ID? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new ID: ");
+					scanf("%d",det.USF_ID);
+				}
+				printf("Would you like to update the email? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new Email: ");
+					scanf("%[^\n",det.Email);
+				}
+				printf("Would you like to update Essay1's grade? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new grade: ");
+					scanf("%d",det.Grade_Essay_1);
+				}
+				printf("Would you like to update Essay2's grade? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new grade: ");
+					scanf("%d",det.Grade_Essay_2);
+				}
+				printf("Would you like to update Term project grade? y/n");
+				scanf("%c",&anw);
+				if(anw=='y'){
+					printf("Enter new Grade: ");
+					scanf("%d",det.Grade_Term_Project);
+				}
+
+				fwrite(&det,recsize,1,fp2);
+			}else{
+				fwrite(&det,resize,1,fp2);
+			}
+			fclose(fp1);
+			fclose(fp2);
+			remove("record.dat");
+			rename("temp.dat","record.dat");
 		}
-	else if(choice == 2){
-		printf("Enter the students ID: ");
-		scanf("&c", ID);
-		if((f = fopen(fname, "r")) == NULL)
-			return -1;
-		while(fgets(ID, 40, f)){
-			if(strstr(ID, int))!= NULL)
-				printf("We found a match!");
-			else
-				printf("No matches sorry.");
-		}
-		fclose(f);
-		}
-	else if(choice == 3){
-		printf("Enter the students email: ");
-		scanf("&c", rec.Email);
-		if((f = fopen(fname, "r")) == NULL)
-			return -1;
-		while(fgets(rec.Email, 40, f)){
-			if(strstr(rec.Email, str))!= NULL)
-				printf("We found a match!");
-			else
-				printf("No matches sorry.");
-		}
-		fclose(f);
-		}
-	
 	}
+    
+}
+
+
+
+
 }
     
 }
