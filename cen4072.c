@@ -102,6 +102,57 @@ void add_record(const record *rec, FILE *f) {
 	}
     }
     
+void find_record(char *name, record *rec, FILE *f){
+	int choice;
+	printf("Do you wish to search by \n");
+	printf("1: Student Name \n")
+	printf("2: Student ID \n");
+	printf("3: Student Email \n");
+	printf("What would you like to do? ");
+	scanf(%d, choice);
+	if(choice == 1){
+		printf("Enter the students name: ");
+		scanf("&c", name);
+		if((f = fopen(fname, "r")) == NULL)
+			return -1;
+		while(fgets(name, 40, f)){
+			if(strstr(name, str))!= NULL)
+				printf("We found a match!");
+			else
+				printf("No matches sorry.");
+		}
+		fclose(f);
+		}
+	else if(choice == 2){
+		printf("Enter the students ID: ");
+		scanf("&c", ID);
+		if((f = fopen(fname, "r")) == NULL)
+			return -1;
+		while(fgets(ID, 40, f)){
+			if(strstr(ID, int))!= NULL)
+				printf("We found a match!");
+			else
+				printf("No matches sorry.");
+		}
+		fclose(f);
+		}
+	else if(choice == 3){
+		printf("Enter the students email: ");
+		scanf("&c", rec.Email);
+		if((f = fopen(fname, "r")) == NULL)
+			return -1;
+		while(fgets(rec.Email, 40, f)){
+			if(strstr(rec.Email, str))!= NULL)
+				printf("We found a match!");
+			else
+				printf("No matches sorry.");
+		}
+		fclose(f);
+		}
+	
+	}
+}
+    
 }
 
 
