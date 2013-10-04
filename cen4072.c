@@ -127,7 +127,7 @@ void add_record(const record *rec, FILE *f) {
 			scanf("&c", name);
 			if((f = fopen(fname, "r")) == NULL)
 				return -1;
-			while(fgets(name, 40, f)){
+			while(!feof(f)){
 				if(strstr(name, str))!= NULL)
 					printf("We found a match!");
 				else
@@ -140,7 +140,7 @@ void add_record(const record *rec, FILE *f) {
 			scanf("&c", ID);
 			if((f = fopen(fname, "r")) == NULL)
 				return -1;
-			while(fgets(ID, 40, f)){
+			while(!feof(f)){
 				if(strstr(ID, int))!= NULL)
 					printf("We found a match!");
 				else
@@ -153,7 +153,7 @@ void add_record(const record *rec, FILE *f) {
 			scanf("&c", rec.Email);
 			if((f = fopen(fname, "r")) == NULL)
 				return -1;
-			while(fgets(rec.Email, 40, f)){
+			while(!feof(f)){
 				if(strstr(rec.Email, str))!= NULL)
 					printf("We found a match!");
 				else
